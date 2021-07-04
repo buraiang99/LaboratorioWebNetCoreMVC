@@ -27,24 +27,24 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-	                {
+                    {
                         <tr>
                             <td>@item.Carnet</td>
                             <td>@item.Nombre</td>
                             <td>
-                                <!----<a asp-controller="Estudiantes" asp-action="MostrarEstudiantes" asp-route-id="@item.Carnet" class="btn btn-secondary">Ver detalles</a>-->
-                                <input type="button" value="Detalles" class="btn btn-secondary" onclick="location.href = '@Url.Action("MostrarEstudiantes", "Estudiantes")'"/>
-                                
+                                <a asp-controller="Estudiantes" asp-action="MostrarEstudiantes" asp-route-id="@item.Carnet" class="btn btn-secondary">Ver detalles</a>
+                                <!----<input type="button" value="Detalles" class="btn btn-secondary" onclick="location.href = '@Url.Action("MostrarEstudiantes", "Estudiantes", @item.Carnet)'"/>-->
+
                             </td>
-                        </tr>
-	                }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <p>No existen registros</p>
-        }
-    </div>
-</div>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <p>No existen registros</p>
+                                    }
+                                </div>
+                            </div>
 

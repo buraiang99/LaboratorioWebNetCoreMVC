@@ -27,22 +27,27 @@ namespace LaboratorioWebNetCoreMVC.Controllers
             this.estudianreList.Add(new Estudiante("B44444", "Carlos", "Salas", 21));
             return View(this.estudianreList);
         }
-        [HttpPost]
-        //[Route("nuevadireccion/accion/{carnet}")]
-        public IActionResult MostrarEstudiantes(string carnet)
+        [HttpGet]
+        [Route("controller/accion/{id}")]
+        public IActionResult MostrarEstudiantes(string id)
         {
+            this.estudianreList.Add(new Estudiante("B00000", "Pedro", "Ramirez", 21));
+            this.estudianreList.Add(new Estudiante("B11111", "Marco", "Jimenez", 21));
+            this.estudianreList.Add(new Estudiante("B22222", "Juan", "Brenes", 21));
+            this.estudianreList.Add(new Estudiante("B33333", "Pablo", "Mora", 21));
+            this.estudianreList.Add(new Estudiante("B44444", "Carlos", "Salas", 21));
             //string param = (string)ViewData["carnet"];
-            Console.WriteLine("------------------------"+carnet);
+            //Console.WriteLine("------------------------"+id);
             foreach (var item in this.estudianreList)
             {
-                if (item.Carnet.Equals(carnet))
+                if (String.Equals(id,item.Carnet))
                 {
                     Estudiante estudiante = new Estudiante(item.Carnet,item.Nombre,item.Apellido, item.Edad);
                     
                     return View("Views/Estudiantes/View.cshtml", estudiante);
                 }
             }
-            Estudiante estudiante2 = new Estudiante("null", "null", "null", 0);
+            Estudiante estudiante2 = new Estudiante(id, "null", "null", 0);
             return View("Views/Estudiantes/View.cshtml", estudiante2);
         }
     }
