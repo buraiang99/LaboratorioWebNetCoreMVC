@@ -1,0 +1,50 @@
+﻿@model List<LaboratorioWebNetCoreMVC.Models.Estudiante>
+@{
+    ViewData["Title"] = "Lista de estudiantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Lista de estudiantes</h3>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+    <div class="row">
+        @if (true)
+        {
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <td>Carner</td>
+                        <td>Nombre</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+	                {
+                        <tr>
+                            <td>@item.Carnet</td>
+                            <td>@item.Nombre</td>
+                            <td>
+                                <!----<a asp-controller="Estudiantes" asp-action="MostrarEstudiantes" asp-route-id="@item.Carnet" class="btn btn-secondary">Ver detalles</a>-->
+                                <input type="button" value="Detalles" class="btn btn-secondary" onclick="location.href = '@Url.Action("MostrarEstudiantes", "Estudiantes")'"/>
+                                
+                            </td>
+                        </tr>
+	                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No existen registros</p>
+        }
+    </div>
+</div>
+
